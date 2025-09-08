@@ -10,10 +10,10 @@ config_version=5
 
 [application]
 
-config/name="Demo"
+config/name="CobatDemo"
 config/tags=PackedStringArray("cobat_system", "cpp")
 run/main_scene="res://main.tscn"
-config/features=PackedStringArray("4.1", "GL Compatibility")
+config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [rendering]
