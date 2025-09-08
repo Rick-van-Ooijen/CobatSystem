@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://cgi03c0ylki1"]
+
+[ext_resource type="Texture2D" uid="uid://sgwccim4xo05" path="res://icon.svg" id="1_mc5w6"]
+[ext_resource type="Script" path="res://SheatScript.gd" id="2_xj2ga"]
+
+[node name="main" type="Node"]
+
+[node name="GDExample" type="GDExample" parent="."]
+position = Vector2(0.828589, 2.35261)
+texture = ExtResource("1_mc5w6")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="CharSheat" type="CharSheat" parent="."]
+script = ExtResource("2_xj2ga")
