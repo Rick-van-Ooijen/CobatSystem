@@ -1,7 +1,8 @@
 #include "register_types.h"
 
 #include "gdexample.h"
-#include "charSheat.h"
+#include "charSheet.h"
+#include "cobatManager.h"
 
 #include <gdextension_interface.h>
 #include <godot_cpp/core/defs.hpp>
@@ -16,9 +17,10 @@ void initialize_example_module(ModuleInitializationLevel p_level) {
 	}
 
 	ClassDB::register_class<GDExample>();
-	ClassDB::register_class<CharSheat>();
+	ClassDB::register_class<CharSheet>();
 	ClassDB::register_class<num>();
-//	ClassDB::register_class<str>();
+	ClassDB::register_class<str>();
+	ClassDB::register_class<CobatManager>();
 }
 
 void uninitialize_example_module(ModuleInitializationLevel p_level) {

@@ -6,10 +6,12 @@
 [node name="main" type="Node"]
 
 [node name="GDExample" type="GDExample" parent="."]
-position = Vector2(16.8559, 4.63267)
+position = Vector2(18.1314, 0.0268204)
 texture = ExtResource("1_mc5w6")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
-[node name="CharSheat" type="CharSheat" parent="."]
+[node name="CharSheet" type="CharSheet" parent="."]
 script = ExtResource("2_xj2ga")
+
+[node name="CobatManager" type="CobatManager" parent="."]
