@@ -86,6 +86,27 @@ private:
 			UtilityFunctions::print("changevar function activated");
 			UtilityFunctions::print((values).c_str());
 
+		}},
+		{"add", [](ActionData& data, std::string values) {
+			UtilityFunctions::print("changevar function activated");
+			UtilityFunctions::print((values).c_str());
+
+			//get numbers from values
+			int x = 0;
+			int y = 0;
+
+			int z = x + y;
+
+			num newNum = num();
+			newNum.set("Out", z);
+
+			data.numVec.push_back(newNum);
+
+		}},
+		{"subtract", [](ActionData& data, std::string values) {
+			UtilityFunctions::print("changevar function activated");
+			UtilityFunctions::print((values).c_str());
+
 		}}
 
 
