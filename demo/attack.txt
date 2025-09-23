@@ -1,0 +1,7 @@
+#this is a comment. for now this works because it does nothing with lines without a proper function. in the future i will make it skip lines starting with "#" or ones that are empty
+#each line should be executed as a command, with evrything before ": " being the name of the function called. amd everything after being variables to be used.
+roll: 1, 64
+changevar: target.health
+roll: 1, 64
+roll: 1, 64
+changevar: ...

@@ -88,7 +88,7 @@ private:
 
 		}},
 		{"add", [](ActionData& data, std::string values) {
-			UtilityFunctions::print("changevar function activated");
+			UtilityFunctions::print("add function activated");
 			UtilityFunctions::print((values).c_str());
 
 			//get numbers from values

@@ -40,6 +40,8 @@ void CobatManager::RunSequence(String arg)
 	std::string line;
 
 	ActionData data;
+	std::vector<num> numOutputs;
+	std::vector<str> strOutputs;
 
 	while (std::getline(stream, line)) {
 		// process each line
