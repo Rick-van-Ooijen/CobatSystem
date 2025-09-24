@@ -34,6 +34,7 @@ class CobatManager : public Node {
 
 private:
 
+	static void ReadValues(std::vector<int>& numbers, std::vector<std::string>& strings, std::string values);
 
 	
 
@@ -51,10 +52,12 @@ public:
 private:
 
 	// find a way to have this not in the header. preferably its own file
-	std::unordered_map<std::string, std::function<void(ActionData&, std::string)>> commands = {
-		{"roll", [](ActionData& data, std::string values) {
-			UtilityFunctions::print("roll function activated");
-			UtilityFunctions::print((values).c_str());
+	std::unordered_map<std::string, std::function<void(ActionData&, std::vector<num>&, std::vector<str>&, std::string)>> commands = {
+		{"roll", [](ActionData& data, std::vector<num>& numOutputs, std::vector<str>& strOutputs, std::string values) {
+			
+			
+			//UtilityFunctions::print("roll function activated");
+			//UtilityFunctions::print((values).c_str());
 			size_t pos = values.find(", ");
 			int min = 0;
 			if (!(min = stoi(values.substr(0, pos))))
@@ -82,14 +85,12 @@ private:
 			}
 			
 		}},
-		{"changevar", [](ActionData& data, std::string values) {
-			UtilityFunctions::print("changevar function activated");
-			UtilityFunctions::print((values).c_str());
+		{"changevar", [](ActionData& data, std::vector<num>& numOutputs, std::vector<str>& strOutputs, std::string values) {
+			
 
 		}},
-		{"add", [](ActionData& data, std::string values) {
-			UtilityFunctions::print("add function activated");
-			UtilityFunctions::print((values).c_str());
+		{"add", [](ActionData& data, std::vector<num>& numOutputs, std::vector<str>& strOutputs, std::string values) {
+			
 
 			//get numbers from values
 			int x = 0;
@@ -103,9 +104,39 @@ private:
 			data.numVec.push_back(newNum);
 
 		}},
-		{"subtract", [](ActionData& data, std::string values) {
-			UtilityFunctions::print("changevar function activated");
-			UtilityFunctions::print((values).c_str());
+		{"subtract", [](ActionData& data, std::vector<num>& numOutputs, std::vector<str>& strOutputs, std::string values) {
+			
+
+		}},
+		{"readOut", [](ActionData& data, std::vector<num>& numOutputs, std::vector<str>& strOutputs, std::string values) {
+			std::vector<int> numbers;
+			std::vector<std::string> strings;
+
+			ReadValues(numbers, strings, values);
+
+			for (int currentNumber : numbers){
+				UtilityFunctions::print(currentNumber);
+			}
+			for (std::string currentString : strings){
+				UtilityFunctions::print(currentString.c_str());
+			}
+
+			num newNum = num();
+			newNum.set(strings[0], numbers[0]);
+			numOutputs.push_back(newNum);
+
+
+			UtilityFunctions::print("numOutputs");
+
+			for (num currentNum : numOutputs){
+				UtilityFunctions::print("<-entry->");
+				UtilityFunctions::print(currentNum.name.c_str());
+				UtilityFunctions::print(currentNum.value);
+				UtilityFunctions::print("<-->");
+
+			}
+
+
 
 		}}
 

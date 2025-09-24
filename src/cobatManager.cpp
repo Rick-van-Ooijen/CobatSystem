@@ -55,7 +55,7 @@ void CobatManager::RunSequence(String arg)
 			// use the command from the map
 			auto func = commands.find(command);
 			if (func != commands.end()) {
-				func->second(data, values);
+				func->second(data, numOutputs, strOutputs, values);
 			}
 			
 			}
@@ -63,3 +63,49 @@ void CobatManager::RunSequence(String arg)
 
 
 }
+// wip syntax
+// first char of an arg is type
+// i for integer
+// s for string
+// r for reference to exisitng variable
+
+void CobatManager::ReadValues(std::vector<int>& numbers, std::vector<std::string>& strings, std::string values)
+{
+	values;
+	bool foundEnd = false;
+
+	while (!foundEnd)
+	{
+
+
+		size_t pos = values.find(", ");
+		if (pos == std::string::npos){
+			foundEnd = true;
+		}
+		
+		std::string newValue = values.substr(0, pos); // seperate attribute name and value
+		
+		//make switch statement
+
+		if (newValue[0] == 'i'){
+			
+			numbers.push_back(stoi(newValue.substr(1)));
+
+			//UtilityFunctions::print("reading an integer");
+		}
+		else if (newValue[0] == 's'){
+			strings.push_back(newValue.substr(1));
+
+			//UtilityFunctions::print("reading a string");
+		}
+		else if (newValue[0] == 'r'){
+			
+			//UtilityFunctions::print("reading a reference");
+		}
+		
+		values = values.substr(pos + 2);
+	}
+
+
+}
+

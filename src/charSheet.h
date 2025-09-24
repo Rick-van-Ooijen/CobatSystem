@@ -42,6 +42,7 @@ private:
 
 	std::vector<str> strVec;
 	std::vector<num> numVec;
+	int side = 0;
 	
 
 protected:
