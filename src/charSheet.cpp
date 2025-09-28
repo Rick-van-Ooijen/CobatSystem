@@ -102,6 +102,40 @@ void CharSheet::InitializeValues(String arg) {
 
 }
 
+void CharSheet::ProcessModifiers() {
+
+	for (size_t i = 0; i < modVec.size(); i++)
+	{
+		modVec[i].numModifiers;
+
+
+
+	}
+
+	/*	for (size_t i = 0; i < strVec.size(); i++)
+	{
+		for (size_t j = 0; j < modVec.size(); j++)
+		{
+			Modifier currentModifier = modVec[j];
+			// get str modifiers
+			// foreach, determine math operation, then do
+		}
+	}
+
+	for (size_t i = 0; i < numVec.size(); i++)
+	{
+		for (size_t j = 0; j < modVec.size(); j++)
+		{
+			// get num modifiers
+			// foreach, append
+		}
+	}*/
+	
+
+
+
+}
+
 String CharSheet::PrintData() {
 	
 	std::string output = "";

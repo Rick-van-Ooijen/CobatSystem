@@ -3,6 +3,7 @@
 
 #include <godot_cpp/classes/Node.hpp>
 //#include <godot_cpp/classes/Object.hpp>
+#include "modifier.h"
 #include <string>
 #include <sstream>
 #include <vector>
@@ -42,6 +43,11 @@ private:
 
 	std::vector<str> strVec;
 	std::vector<num> numVec;
+
+	std::vector<Modifier> modVec;
+
+	std::vector<str> modifiedStrVec;
+	std::vector<num> modifiedNumVec;
 	int side = 0;
 	bool activated = false;
 
@@ -53,6 +59,7 @@ public:
 	~CharSheet();
 
 	void InitializeValues(String arg);
+	void ProcessModifiers();
 	String PrintData();
 
 	void _process(double delta);
