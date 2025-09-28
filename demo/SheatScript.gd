@@ -7,7 +7,7 @@ func _ready():
 	var content = file.get_as_text()
 	self.InitializeValues(content)
 	
-	self.PrintData()
+	#self.PrintData()
 	pass # Replace with function body.
 
 

@@ -102,20 +102,32 @@ void CharSheet::InitializeValues(String arg) {
 
 }
 
-void CharSheet::PrintData() {
+String CharSheet::PrintData() {
+	
+	std::string output = "";
+
+
 	for (size_t i = 0; i < strVec.size(); i++)
 	{
 		str current = strVec.at(i);
-		UtilityFunctions::print((current.name).c_str(), ": ", (current.value).c_str());
+
+		output.append(current.name + ": " + current.value + "\n");
+
+		//UtilityFunctions::print((current.name).c_str(), ": ", (current.value).c_str());
 	}
 
 	for (size_t i = 0; i < numVec.size(); i++)
 	{
 		num current = numVec.at(i);
-		UtilityFunctions::print((current.name).c_str(), ": ", (current.value));
+
+		output.append(current.name + ": " + std::to_string(current.value) + "\n");
+
+		//UtilityFunctions::print((current.name).c_str(), ": ", (current.value));
 	}
 	
 
+
+	return String(output.c_str());
 
 }
 

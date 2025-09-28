@@ -47,9 +47,15 @@ public:
 
 	void RunSequence(String arg);
 
+	// RunTurn. checks which sides turn it is, and returns the active unit/side
+
 	void _process(double delta);
 
 private:
+
+	std::vector<CharSheet> units;
+
+
 
 	// find a way to have this not in the header. preferably its own file
 	std::unordered_map<std::string, std::function<void(ActionData&, std::vector<num>&, std::vector<str>&, std::string)>> commands = {

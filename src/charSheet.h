@@ -43,7 +43,7 @@ private:
 	std::vector<str> strVec;
 	std::vector<num> numVec;
 	int side = 0;
-	
+	bool activated = false;
 
 protected:
 	static void _bind_methods();
@@ -53,7 +53,7 @@ public:
 	~CharSheet();
 
 	void InitializeValues(String arg);
-	void PrintData();
+	String PrintData();
 
 	void _process(double delta);
 };

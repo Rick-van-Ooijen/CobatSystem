@@ -1,15 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://cgi03c0ylki1"]
+[gd_scene load_steps=4 format=3 uid="uid://cgi03c0ylki1"]
 
-[ext_resource type="Texture2D" uid="uid://sgwccim4xo05" path="res://icon.svg" id="1_mc5w6"]
+[ext_resource type="Script" uid="uid://cnxmgk7wcpknb" path="res://SheatScript.gd" id="1_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://cewu82c3cdrpy" path="res://UnitDisplay.tscn" id="1_h2yge"]
 [ext_resource type="Script" uid="uid://d031wt7woj6wy" path="res://CobatManagerScript.gd" id="2_6uj8w"]
 
 [node name="main" type="Node"]
 
 [node name="CharSheet" type="CharSheet" parent="."]
+script = ExtResource("1_1bvp3")
 
-[node name="GDExample" type="GDExample" parent="."]
-position = Vector2(15.7731, 18.9535)
-texture = ExtResource("1_mc5w6")
+[node name="UnitDisplay" parent="CharSheet" instance=ExtResource("1_h2yge")]
+offset_left = -575.0
+offset_top = -323.0
+offset_right = -575.0
+offset_bottom = -323.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
