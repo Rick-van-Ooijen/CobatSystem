@@ -3,6 +3,19 @@
 
 using namespace godot;
 
+numMod::numMod() {}
+numMod::~numMod() {}
+
+void numMod::_bind_methods() {
+}
+
+strMod::strMod() {}
+strMod::~strMod() {}
+
+void strMod::_bind_methods() {
+}
+
+
 void Modifier::_bind_methods() {
 }
 

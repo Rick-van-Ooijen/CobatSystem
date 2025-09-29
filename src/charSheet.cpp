@@ -106,8 +106,21 @@ void CharSheet::ProcessModifiers() {
 
 	for (size_t i = 0; i < modVec.size(); i++)
 	{
-		modVec[i].numModifiers;
+		std::vector<str> bufferStrVec = strVec;
+		std::vector<num> bufferNumVec = numVec;
 
+	    std::vector<numMod> numMods = modVec[i].numModifiers;
+
+		for (numMod currentMod : numMods){
+			//in nums find thing
+		}
+
+		
+	    std::vector<strMod> strMods = modVec[i].strModifiers;
+		
+		for (strMod currentMod : strMods){
+			//UtilityFunctions::print(currentString.c_str());
+		}
 
 
 	}
