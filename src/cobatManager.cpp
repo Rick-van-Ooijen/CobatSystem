@@ -71,7 +71,7 @@ void CobatManager::RunSequence(String arg)
 
 void CobatManager::ReadValues(std::vector<int>& numbers, std::vector<std::string>& strings, std::string values)
 {
-	values;
+	
 	bool foundEnd = false;
 
 	while (!foundEnd)
@@ -100,7 +100,7 @@ void CobatManager::ReadValues(std::vector<int>& numbers, std::vector<std::string
 		}
 		else if (newValue[0] == 'r'){
 			
-			//UtilityFunctions::print("reading a reference");
+			UtilityFunctions::print("reading a reference");
 		}
 		
 		values = values.substr(pos + 2);
@@ -108,4 +108,57 @@ void CobatManager::ReadValues(std::vector<int>& numbers, std::vector<std::string
 
 
 }
+
+std::string CobatManager::ReadString(std::string value)
+{
+	switch(value[0])
+	{
+		case 's':
+		{
+			return value;
+			break;
+		}
+		case 'r':
+		{
+			UtilityFunctions::print("reading a reference");
+			break;
+		}
+		default:
+		{
+			UtilityFunctions::print("error: readStr encounterd invalid input");
+			break;
+		}
+	}
+	return 0;
+}
+
+
+
+int CobatManager::ReadInt(std::string value)
+{
+	switch(value[0])
+	{
+		case 'i':
+		{
+			return stoi(value.substr(1));
+			break;
+		}
+		case 'r':
+		{
+			UtilityFunctions::print("reading a reference");
+			break;
+		}
+		default:
+		{
+			UtilityFunctions::print("error: readInt encounterd invalid input");
+			break;
+		}
+	}
+	return 0;
+
+}
+
+
+
+
 

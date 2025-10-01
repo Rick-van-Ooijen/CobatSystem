@@ -34,14 +34,16 @@ class CobatManager : public Node {
 
 private:
 
-	static void ReadValues(std::vector<int>& numbers, std::vector<std::string>& strings, std::string values);
 
-	
 
 protected:
-	static void _bind_methods();
+static void _bind_methods();
 
 public:
+	static void ReadValues(std::vector<int>& numbers, std::vector<std::string>& strings, std::string values);
+	static std::string ReadString(std::string value);
+	static int ReadInt(std::string value);
+
 	CobatManager();
 	~CobatManager();
 
@@ -51,9 +53,9 @@ public:
 
 	void _process(double delta);
 
+	std::vector<CharSheet> units;
 private:
 
-	std::vector<CharSheet> units;
 
 
 
@@ -140,6 +142,85 @@ private:
 				UtilityFunctions::print(currentNum.value);
 				UtilityFunctions::print("<-->");
 
+			}
+
+
+
+		}},
+		{"makeModifier", [](ActionData& data, std::vector<num>& numOutputs, std::vector<str>& strOutputs, std::string values) {
+			std::vector<int> numbers;
+			std::vector<std::string> strings;
+
+			ReadValues(numbers, strings, values);
+
+			std::string targetName = strings[0];
+
+			Modifier newModifier;
+
+			for (size_t i = 1; i < strings.size(); i++)
+				{ //<type-name-modType-value
+					bool foundEnd = false;
+					std::string modifierData[4];
+
+
+					for (size_t j = 0; j < 4; j++)
+					{
+						size_t pos = values.find("-");
+						if (pos == std::string::npos){
+							foundEnd = true;
+						}
+
+						modifierData[j] = strings[i].substr(0, pos);
+
+
+
+					}
+
+
+					std::string dataType = ReadString(modifierData[0]);
+					std::string targetName = ReadString(modifierData[1]);
+					int modType = ReadInt(modifierData[2]);
+
+					switch(dataType[0]){
+						case 'i':
+						{
+							numMod newNumMod;
+							newNumMod.name = targetName;
+							newNumMod.modType = modType;
+							newNumMod.value = ReadInt(modifierData[3]);
+
+							newModifier.numModifiers.push_back(newNumMod);
+							break;
+						}
+						case 's':
+						{
+							strMod newStrMod;
+							newStrMod.name = targetName;
+							newStrMod.modType = modType;
+							newStrMod.value = ReadString(modifierData[3]);
+
+							newModifier.strModifiers.push_back(newStrMod);
+							break;
+						}
+
+
+
+					}
+
+
+
+
+				}
+
+			
+			//for(size_t i = 0; i < units.size(); i++)
+			{
+				//CharSheet currentUnit = units[i];
+				//if(currentUnit.name == targetName)
+				{
+					//currentUnit.modVec.push_back(newModifier);
+					//return;
+				}
 			}
 
 

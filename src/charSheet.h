@@ -12,27 +12,27 @@ namespace godot {
 
 class num : public Object{
 	GDCLASS(num, Object)
-	public:
+public:
 	std::string name = "";
 	int value = 0;
 	num();
 	void set(std::string iName, int iValue);
 	~num();
 
-	protected:
+protected:
 	static void _bind_methods();
 };
 
 class str : public Object{
 	GDCLASS(str, Object)
-	public:
+public:
 	std::string name = "";
 	std::string value = "";
 	str();
 	void set(std::string iName, std::string iValue);
 	~str();
 
-	protected:
+protected:
 	static void _bind_methods();
 };
 
@@ -61,6 +61,8 @@ public:
 	void InitializeValues(String arg);
 	void ProcessModifiers();
 	String PrintData();
+	num* FindNum(std::vector<num>& vector, std::string name);
+	str* FindStr(std::vector<str>& vector, std::string name);
 
 	void _process(double delta);
 };

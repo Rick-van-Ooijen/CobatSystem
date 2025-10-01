@@ -9,23 +9,21 @@ using namespace godot;
 
 num::num() {}
 num::~num() {}
+void num::_bind_methods() {}
 
 void num::set(std::string iName, int iValue) {
 	name=iName; value=iValue;
 }
 
-void num::_bind_methods() {
-}
-
 str::str() {}
 str::~str() {}
+void str::_bind_methods() {}
 
 void str::set(std::string iName, std::string iValue) {
 	name=iName; value=iValue;
 }
 
-void str::_bind_methods() {
-}
+
 
 void CharSheet::_bind_methods() {
 
@@ -104,50 +102,107 @@ void CharSheet::InitializeValues(String arg) {
 
 void CharSheet::ProcessModifiers() {
 
+	std::vector<num> bufferNumVec = numVec;
+	std::vector<str> bufferStrVec = strVec;
+
 	for (size_t i = 0; i < modVec.size(); i++)
 	{
-		std::vector<str> bufferStrVec = strVec;
-		std::vector<num> bufferNumVec = numVec;
 
 	    std::vector<numMod> numMods = modVec[i].numModifiers;
 
-		for (numMod currentMod : numMods){
-			//in nums find thing
+		for (numMod currentMod : numMods)
+		{
+			num* modifiedNum = FindNum(numVec, currentMod.name);
+
+			if(modifiedNum){
+
+				switch(currentMod.modType){
+					case 0:
+						{
+							(*modifiedNum).value += currentMod.value;
+						}
+					case 1:
+						{
+							(*modifiedNum).value -= currentMod.value;
+						}
+					case 2:
+						{
+							(*modifiedNum).value *= currentMod.value;
+						}
+					case 3:
+						{
+							(*modifiedNum).value /= currentMod.value;
+						}
+	
+	
+					default:
+						{
+							//
+						}
+				}
+				
+
+			}
+
 		}
 
 		
 	    std::vector<strMod> strMods = modVec[i].strModifiers;
 		
-		for (strMod currentMod : strMods){
-			//UtilityFunctions::print(currentString.c_str());
+		for (strMod currentMod : strMods)
+		{
+			str* modifiedStr = FindStr(bufferStrVec, currentMod.name);
+
+			(*modifiedStr).name.append(currentMod.value);
 		}
 
 
 	}
-
-	/*	for (size_t i = 0; i < strVec.size(); i++)
-	{
-		for (size_t j = 0; j < modVec.size(); j++)
-		{
-			Modifier currentModifier = modVec[j];
-			// get str modifiers
-			// foreach, determine math operation, then do
-		}
-	}
-
-	for (size_t i = 0; i < numVec.size(); i++)
-	{
-		for (size_t j = 0; j < modVec.size(); j++)
-		{
-			// get num modifiers
-			// foreach, append
-		}
-	}*/
 	
+	numVec.clear();
+	numVec.resize(bufferNumVec.size());
+	for (size_t i = 0; i < bufferNumVec.size(); i++)
+	{
+		modifiedNumVec.push_back(bufferNumVec[i]);
+	};
+
+	strVec.clear();
+	strVec.resize(bufferStrVec.size());
+	for (size_t i = 0; i < bufferStrVec.size(); i++)
+	{
+		modifiedStrVec.push_back(bufferStrVec[i]);
+	};
 
 
 
 }
+
+num* CharSheet::FindNum(std::vector<num>& vector, std::string name)
+{
+	for (size_t i = 0; i < vector.size(); i++)
+	{
+		if (vector[i].name == name)
+		{
+			return &vector[i];
+		}
+	}
+
+	return nullptr;
+}
+
+str* CharSheet::FindStr(std::vector<str>& vector, std::string name)
+{
+	for (size_t i = 0; i < vector.size(); i++)
+	{
+		if (vector[i].name == name)
+		{
+			return &vector[i];
+		}
+	}
+
+	return nullptr;
+}
+
 
 String CharSheet::PrintData() {
 	

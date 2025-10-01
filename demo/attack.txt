@@ -1,5 +1,8 @@
 #this is a comment. for now this works because it does nothing with lines without a proper function. in the future i will make it skip lines starting with "#" or ones that are empty
 #each line should be executed as a command, with evrything before ": " being the name of the function called. amd everything after being variables to be used.
+#
+#syntax examples
+#
 
 readOut: sapple, i1, i420, sbanana, rsomething
 
@@ -12,3 +15,19 @@ readOut: sdgfr, i999
 #roll: 1, 64
 #roll: 1, 64
 #changevar: ...
+
+
+makeModifier: snameTarget
+per modifier:
+type
+name
+modType
+value
+
+makeModifier: snameTarget, s<type-name-modType-value
+
+makeModifier: sPlayer, si-sdamage-sadd-i1, s<sint-sspeed-sadd-i6
+
+
+add: i1, i2, snewnumber
+changeVar: snameVar, sunitname, rnewnumber
