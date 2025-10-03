@@ -48,20 +48,21 @@ public:
 	~CobatManager();
 
 	void RunSequence(String arg);
+	void AddUnit(CharSheet* unit);
 
 	// RunTurn. checks which sides turn it is, and returns the active unit/side
 
 	void _process(double delta);
 
-	std::vector<CharSheet> units;
+	std::vector<CharSheet*> units;
 private:
 
 
 
 
 	// find a way to have this not in the header. preferably its own file
-	std::unordered_map<std::string, std::function<void(ActionData&, std::vector<num>&, std::vector<str>&, std::string)>> commands = {
-		{"roll", [](ActionData& data, std::vector<num>& numOutputs, std::vector<str>& strOutputs, std::string values) {
+	std::unordered_map<std::string, std::function<void(ActionData&, std::vector<num>&, std::vector<str>&, std::string, CobatManager*)>> commands = {
+		{"roll", [](ActionData& data, std::vector<num>& numOutputs, std::vector<str>& strOutputs, std::string values, CobatManager* manager) {
 			
 			
 			//UtilityFunctions::print("roll function activated");
@@ -93,11 +94,11 @@ private:
 			}
 			
 		}},
-		{"changevar", [](ActionData& data, std::vector<num>& numOutputs, std::vector<str>& strOutputs, std::string values) {
+		{"changevar", [](ActionData& data, std::vector<num>& numOutputs, std::vector<str>& strOutputs, std::string values, CobatManager* manager) {
 			
 
 		}},
-		{"add", [](ActionData& data, std::vector<num>& numOutputs, std::vector<str>& strOutputs, std::string values) {
+		{"add", [](ActionData& data, std::vector<num>& numOutputs, std::vector<str>& strOutputs, std::string values, CobatManager* manager) {
 			
 
 			//get numbers from values
@@ -112,11 +113,11 @@ private:
 			data.numVec.push_back(newNum);
 
 		}},
-		{"subtract", [](ActionData& data, std::vector<num>& numOutputs, std::vector<str>& strOutputs, std::string values) {
+		{"subtract", [](ActionData& data, std::vector<num>& numOutputs, std::vector<str>& strOutputs, std::string values, CobatManager* manager) {
 			
 
 		}},
-		{"readOut", [](ActionData& data, std::vector<num>& numOutputs, std::vector<str>& strOutputs, std::string values) {
+		{"readOut", [](ActionData& data, std::vector<num>& numOutputs, std::vector<str>& strOutputs, std::string values, CobatManager* manager) {
 			std::vector<int> numbers;
 			std::vector<std::string> strings;
 
@@ -147,7 +148,7 @@ private:
 
 
 		}},
-		{"makeModifier", [](ActionData& data, std::vector<num>& numOutputs, std::vector<str>& strOutputs, std::string values) {
+		{"makeModifier", [](ActionData& data, std::vector<num>& numOutputs, std::vector<str>& strOutputs, std::string values, CobatManager* manager) {
 			std::vector<int> numbers;
 			std::vector<std::string> strings;
 
@@ -161,11 +162,12 @@ private:
 				{ //<type-name-modType-value
 					bool foundEnd = false;
 					std::string modifierData[4];
+					strings[i].erase(0,1);
 
 
 					for (size_t j = 0; j < 4; j++)
 					{
-						size_t pos = values.find("-");
+						size_t pos = strings[i].find("-");
 						if (pos == std::string::npos){
 							foundEnd = true;
 						}
@@ -177,8 +179,8 @@ private:
 					}
 
 
-					std::string dataType = ReadString(modifierData[0]);
-					std::string targetName = ReadString(modifierData[1]);
+					std::string dataType = modifierData[0];
+					std::string targetName = modifierData[1];
 					int modType = ReadInt(modifierData[2]);
 
 					switch(dataType[0]){
@@ -189,6 +191,12 @@ private:
 							newNumMod.modType = modType;
 							newNumMod.value = ReadInt(modifierData[3]);
 
+							UtilityFunctions::print("adding modifier:");
+							UtilityFunctions::print("-datatype: ", dataType.c_str());
+							UtilityFunctions::print("-targetName: ", targetName.c_str());
+							UtilityFunctions::print("-modType: ", modifierData[2].c_str());
+							UtilityFunctions::print("-value: ", modifierData[3].c_str());
+
 							newModifier.numModifiers.push_back(newNumMod);
 							break;
 						}
@@ -198,6 +206,12 @@ private:
 							newStrMod.name = targetName;
 							newStrMod.modType = modType;
 							newStrMod.value = ReadString(modifierData[3]);
+
+							UtilityFunctions::print("adding modifier:");
+							UtilityFunctions::print("-datatype: ", dataType.c_str());
+							UtilityFunctions::print("-targetName: ", targetName.c_str());
+							UtilityFunctions::print("-modType: ", modifierData[2].c_str());
+							UtilityFunctions::print("-value: ", modifierData[3].c_str());
 
 							newModifier.strModifiers.push_back(newStrMod);
 							break;
@@ -213,15 +227,15 @@ private:
 				}
 
 			
-			//for(size_t i = 0; i < units.size(); i++)
+			/*for(size_t i = 0; i < (*manager).units.size(); i++)
 			{
-				//CharSheet currentUnit = units[i];
-				//if(currentUnit.name == targetName)
+				CharSheet* currentUnit = (*manager).units[i];
+				if((*currentUnit).name == targetName)
 				{
-					//currentUnit.modVec.push_back(newModifier);
-					//return;
+					(*currentUnit).modVec.push_back(newModifier);
+					return;
 				}
-			}
+			}*/
 
 
 

@@ -4,11 +4,11 @@
 #syntax examples
 #
 
-readOut: sapple, i1, i420, sbanana, rsomething
+#readOut: sapple, i1, i420, sbanana, rsomething
 
-readOut: i27, sgreen
+#readOut: i27, sgreen
 
-readOut: sdgfr, i999
+#readOut: sdgfr, i999
 
 #roll: 1, 64
 #changevar: target.health
@@ -17,17 +17,17 @@ readOut: sdgfr, i999
 #changevar: ...
 
 
-makeModifier: snameTarget
-per modifier:
-type
-name
-modType
-value
+#makeModifier: snameTarget
+#per modifier:
+#type
+#name
+#modType
+#value
 
-makeModifier: snameTarget, s<type-name-modType-value
+#makeModifier: snameTarget, s<type-name-modType-value
 
-makeModifier: sPlayer, si-sdamage-sadd-i1, s<sint-sspeed-sadd-i6
+makeModifier: sPlayer, s<i-damage-i0-i1, s<i-speed-i0-i6
 
 
-add: i1, i2, snewnumber
-changeVar: snameVar, sunitname, rnewnumber
+#add: i1, i2, snewnumber
+#changeVar: snameVar, sunitname, rnewnumber

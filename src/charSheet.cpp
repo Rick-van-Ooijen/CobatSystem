@@ -74,7 +74,7 @@ void CharSheet::InitializeValues(String arg) {
 						newStr.set(name, value);
 						strVec.push_back(newStr);
 					}
-					UtilityFunctions::print("adding some things");
+					//UtilityFunctions::print("adding some things");
 					break;
 					case 2:
 					{
@@ -157,17 +157,17 @@ void CharSheet::ProcessModifiers() {
 		}
 
 
-	}
-	
-	numVec.clear();
-	numVec.resize(bufferNumVec.size());
+	}	
+
+	modifiedNumVec.clear();
+	modifiedNumVec.resize(bufferNumVec.size());
 	for (size_t i = 0; i < bufferNumVec.size(); i++)
 	{
 		modifiedNumVec.push_back(bufferNumVec[i]);
 	};
 
-	strVec.clear();
-	strVec.resize(bufferStrVec.size());
+	modifiedStrVec.clear();
+	modifiedStrVec.resize(bufferStrVec.size());
 	for (size_t i = 0; i < bufferStrVec.size(); i++)
 	{
 		modifiedStrVec.push_back(bufferStrVec[i]);

@@ -13,7 +13,7 @@ namespace godot {
 class num : public Object{
 	GDCLASS(num, Object)
 public:
-	std::string name = "";
+	std::string name = "Player";
 	int value = 0;
 	num();
 	void set(std::string iName, int iValue);
@@ -41,23 +41,26 @@ class CharSheet : public Node {
 
 private:
 
-	std::vector<str> strVec;
-	std::vector<num> numVec;
 
-	std::vector<Modifier> modVec;
+std::vector<str> strVec;
+std::vector<num> numVec;
 
-	std::vector<str> modifiedStrVec;
-	std::vector<num> modifiedNumVec;
-	int side = 0;
-	bool activated = false;
+
+std::vector<str> modifiedStrVec;
+std::vector<num> modifiedNumVec;
+int side = 0;
+bool activated = false;
 
 protected:
-	static void _bind_methods();
+static void _bind_methods();
 
 public:
 	CharSheet();
 	~CharSheet();
 
+	std::string name = "";
+	std::vector<Modifier> modVec;
+	
 	void InitializeValues(String arg);
 	void ProcessModifiers();
 	String PrintData();

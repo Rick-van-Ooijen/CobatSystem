@@ -12,6 +12,7 @@ ActionData::~ActionData() {}
 void CobatManager::_bind_methods() {
 
 	ClassDB::bind_method(D_METHOD("RunSequence", "input"), &CobatManager::RunSequence);
+	ClassDB::bind_method(D_METHOD("AddUnit", "input"), &CobatManager::AddUnit);
 
 }
 
@@ -55,7 +56,7 @@ void CobatManager::RunSequence(String arg)
 			// use the command from the map
 			auto func = commands.find(command);
 			if (func != commands.end()) {
-				func->second(data, numOutputs, strOutputs, values);
+				func->second(data, numOutputs, strOutputs, values, this);
 			}
 			
 			}
@@ -63,6 +64,12 @@ void CobatManager::RunSequence(String arg)
 
 
 }
+
+void CobatManager::AddUnit(CharSheet* unit)
+{
+	units.push_back(unit);
+}
+
 // wip syntax
 // first char of an arg is type
 // i for integer
