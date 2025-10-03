@@ -163,6 +163,8 @@ private:
 					bool foundEnd = false;
 					std::string modifierData[4];
 					strings[i].erase(0,1);
+					UtilityFunctions::print(strings[i].c_str());
+
 
 
 					for (size_t j = 0; j < 4; j++)
@@ -173,7 +175,9 @@ private:
 						}
 
 						modifierData[j] = strings[i].substr(0, pos);
+						UtilityFunctions::print(modifierData[j].c_str());
 
+						strings[i] = strings[i].substr(pos + 1);
 
 
 					}
@@ -227,7 +231,7 @@ private:
 				}
 
 			
-			/*for(size_t i = 0; i < (*manager).units.size(); i++)
+			for(size_t i = 0; i < (*manager).units.size(); i++)
 			{
 				CharSheet* currentUnit = (*manager).units[i];
 				if((*currentUnit).name == targetName)
@@ -235,7 +239,7 @@ private:
 					(*currentUnit).modVec.push_back(newModifier);
 					return;
 				}
-			}*/
+			}
 
 
 

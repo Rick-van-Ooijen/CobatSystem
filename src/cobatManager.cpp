@@ -143,11 +143,16 @@ std::string CobatManager::ReadString(std::string value)
 
 int CobatManager::ReadInt(std::string value)
 {
+	int output = 0;
+
 	switch(value[0])
 	{
+
 		case 'i':
 		{
-			return stoi(value.substr(1));
+			
+			output = stoi(value.substr(1));
+
 			break;
 		}
 		case 'r':
@@ -160,8 +165,11 @@ int CobatManager::ReadInt(std::string value)
 			UtilityFunctions::print("error: readInt encounterd invalid input");
 			break;
 		}
+
+
 	}
-	return 0;
+	return output;
+
 
 }
 
