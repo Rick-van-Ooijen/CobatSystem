@@ -163,7 +163,6 @@ private:
 					bool foundEnd = false;
 					std::string modifierData[4];
 					strings[i].erase(0,1);
-					UtilityFunctions::print(strings[i].c_str());
 
 
 
@@ -175,7 +174,6 @@ private:
 						}
 
 						modifierData[j] = strings[i].substr(0, pos);
-						UtilityFunctions::print(modifierData[j].c_str());
 
 						strings[i] = strings[i].substr(pos + 1);
 
@@ -195,11 +193,11 @@ private:
 							newNumMod.modType = modType;
 							newNumMod.value = ReadInt(modifierData[3]);
 
-							UtilityFunctions::print("adding modifier:");
+							/*UtilityFunctions::print("adding modifier:");
 							UtilityFunctions::print("-datatype: ", dataType.c_str());
 							UtilityFunctions::print("-targetName: ", targetName.c_str());
 							UtilityFunctions::print("-modType: ", modifierData[2].c_str());
-							UtilityFunctions::print("-value: ", modifierData[3].c_str());
+							UtilityFunctions::print("-value: ", modifierData[3].c_str());*/
 
 							newModifier.numModifiers.push_back(newNumMod);
 							break;
@@ -211,11 +209,11 @@ private:
 							newStrMod.modType = modType;
 							newStrMod.value = ReadString(modifierData[3]);
 
-							UtilityFunctions::print("adding modifier:");
+							/*UtilityFunctions::print("adding modifier:");
 							UtilityFunctions::print("-datatype: ", dataType.c_str());
 							UtilityFunctions::print("-targetName: ", targetName.c_str());
 							UtilityFunctions::print("-modType: ", modifierData[2].c_str());
-							UtilityFunctions::print("-value: ", modifierData[3].c_str());
+							UtilityFunctions::print("-value: ", modifierData[3].c_str());*/
 
 							newModifier.strModifiers.push_back(newStrMod);
 							break;

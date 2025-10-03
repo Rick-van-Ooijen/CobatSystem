@@ -56,7 +56,6 @@ void CharSheet::InitializeValues(String arg) {
 
 	while (std::getline(stream, line)) {
 		// process each line
-		UtilityFunctions::print("Line: ", line.c_str());
 
 
 		if (line == "str") {state = 1;}
@@ -74,7 +73,7 @@ void CharSheet::InitializeValues(String arg) {
 						newStr.set(name, value);
 						strVec.push_back(newStr);
 					}
-					//UtilityFunctions::print("adding some things");
+
 					break;
 					case 2:
 					{
@@ -102,7 +101,6 @@ void CharSheet::InitializeValues(String arg) {
 
 void CharSheet::ProcessModifiers() {
 
-	UtilityFunctions::print("hello", name.c_str());
 	std::vector<num> bufferNumVec = numVec;
 	std::vector<str> bufferStrVec = strVec;
 
@@ -158,7 +156,7 @@ void CharSheet::ProcessModifiers() {
 		{
 			int modifiedStrIndex = FindStr(bufferStrVec, currentMod.name);
 
-			bufferStrVec[modifiedStrIndex].name.append(currentMod.value);
+			bufferStrVec[modifiedStrIndex].value.append(currentMod.value.substr(1));
 		}
 
 
@@ -170,7 +168,6 @@ void CharSheet::ProcessModifiers() {
 	{
 		modifiedNumVec.push_back(bufferNumVec[i]);
 	};
-	//UtilityFunctions::print(modifiedNumVec.size());
 
 	modifiedStrVec.clear();
 	for (size_t i = 0; i < bufferStrVec.size(); i++)
