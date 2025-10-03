@@ -113,32 +113,36 @@ void CharSheet::ProcessModifiers() {
 
 		for (numMod currentMod : numMods)
 		{
-			num* modifiedNum = FindNum(numVec, currentMod.name);
+			int modifiedNumIndex = FindNum(bufferNumVec, currentMod.name);
 
-			if(modifiedNum){
+			if(modifiedNumIndex !=99999){
 
 				switch(currentMod.modType){
 					case 0:
 						{
-							(*modifiedNum).value += currentMod.value;
+							bufferNumVec[modifiedNumIndex].value += currentMod.value;
+							break;
 						}
 					case 1:
 						{
-							(*modifiedNum).value -= currentMod.value;
+							bufferNumVec[modifiedNumIndex].value -= currentMod.value;
+							break;
 						}
 					case 2:
 						{
-							(*modifiedNum).value *= currentMod.value;
+							bufferNumVec[modifiedNumIndex].value *= currentMod.value;
+							break;
 						}
 					case 3:
 						{
-							(*modifiedNum).value /= currentMod.value;
+							bufferNumVec[modifiedNumIndex].value /= currentMod.value;
+							break;
 						}
 	
 	
 					default:
 						{
-							//
+							break;
 						}
 				}
 				
@@ -152,20 +156,21 @@ void CharSheet::ProcessModifiers() {
 		
 		for (strMod currentMod : strMods)
 		{
-			str* modifiedStr = FindStr(bufferStrVec, currentMod.name);
+			int modifiedStrIndex = FindStr(bufferStrVec, currentMod.name);
 
-			(*modifiedStr).name.append(currentMod.value);
+			bufferStrVec[modifiedStrIndex].name.append(currentMod.value);
 		}
 
 
-	}	
+	}
+	
 
 	modifiedNumVec.clear();
 	for (size_t i = 0; i < bufferNumVec.size(); i++)
 	{
 		modifiedNumVec.push_back(bufferNumVec[i]);
 	};
-	UtilityFunctions::print(modifiedNumVec.size());
+	//UtilityFunctions::print(modifiedNumVec.size());
 
 	modifiedStrVec.clear();
 	for (size_t i = 0; i < bufferStrVec.size(); i++)
@@ -177,30 +182,30 @@ void CharSheet::ProcessModifiers() {
 
 }
 
-num* CharSheet::FindNum(std::vector<num>& vector, std::string name)
+int CharSheet::FindNum(std::vector<num>& vector, std::string name)
 {
-	for (size_t i = 0; i < vector.size(); i++)
+	for (int i = 0; i < vector.size(); i++)
 	{
 		if (vector[i].name == name)
 		{
-			return &vector[i];
+			return i;
 		}
 	}
 
-	return nullptr;
+	return 99999;
 }
 
-str* CharSheet::FindStr(std::vector<str>& vector, std::string name)
+int CharSheet::FindStr(std::vector<str>& vector, std::string name)
 {
-	for (size_t i = 0; i < vector.size(); i++)
+	for (int i = 0; i < vector.size(); i++)
 	{
 		if (vector[i].name == name)
 		{
-			return &vector[i];
+			return i;
 		}
 	}
 
-	return nullptr;
+	return 99999;
 }
 
 

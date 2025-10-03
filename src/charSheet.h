@@ -64,8 +64,8 @@ public:
 	void InitializeValues(String arg);
 	void ProcessModifiers();
 	String PrintData();
-	num* FindNum(std::vector<num>& vector, std::string name);
-	str* FindStr(std::vector<str>& vector, std::string name);
+	int FindNum(std::vector<num>& vector, std::string name);
+	int FindStr(std::vector<str>& vector, std::string name);
 
 	void _process(double delta);
 };
