@@ -237,7 +237,13 @@ private:
 				if((*currentUnit).name == targetName)
 				{
 					(*currentUnit).modVec.push_back(newModifier);
+					(*currentUnit).ProcessModifiers();
 					return;
+				}
+				else{
+					UtilityFunctions::print("invalid unit");
+					UtilityFunctions::print((*currentUnit).name.c_str());
+					UtilityFunctions::print(targetName.c_str());
 				}
 			}
 

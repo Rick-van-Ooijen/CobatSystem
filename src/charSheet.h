@@ -13,7 +13,7 @@ namespace godot {
 class num : public Object{
 	GDCLASS(num, Object)
 public:
-	std::string name = "Player";
+	std::string name = "";
 	int value = 0;
 	num();
 	void set(std::string iName, int iValue);
@@ -58,7 +58,7 @@ public:
 	CharSheet();
 	~CharSheet();
 
-	std::string name = "";
+	std::string name = "Player";
 	std::vector<Modifier> modVec;
 	
 	void InitializeValues(String arg);

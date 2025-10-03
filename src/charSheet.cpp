@@ -102,6 +102,7 @@ void CharSheet::InitializeValues(String arg) {
 
 void CharSheet::ProcessModifiers() {
 
+	UtilityFunctions::print("hello", name.c_str());
 	std::vector<num> bufferNumVec = numVec;
 	std::vector<str> bufferStrVec = strVec;
 
@@ -160,14 +161,13 @@ void CharSheet::ProcessModifiers() {
 	}	
 
 	modifiedNumVec.clear();
-	modifiedNumVec.resize(bufferNumVec.size());
 	for (size_t i = 0; i < bufferNumVec.size(); i++)
 	{
 		modifiedNumVec.push_back(bufferNumVec[i]);
 	};
+	UtilityFunctions::print(modifiedNumVec.size());
 
 	modifiedStrVec.clear();
-	modifiedStrVec.resize(bufferStrVec.size());
 	for (size_t i = 0; i < bufferStrVec.size(); i++)
 	{
 		modifiedStrVec.push_back(bufferStrVec[i]);
@@ -209,18 +209,18 @@ String CharSheet::PrintData() {
 	std::string output = "";
 
 
-	for (size_t i = 0; i < strVec.size(); i++)
+	for (size_t i = 0; i < modifiedStrVec.size(); i++)
 	{
-		str current = strVec.at(i);
+		str current = modifiedStrVec.at(i);
 
 		output.append(current.name + ": " + current.value + "\n");
 
 		//UtilityFunctions::print((current.name).c_str(), ": ", (current.value).c_str());
 	}
 
-	for (size_t i = 0; i < numVec.size(); i++)
+	for (size_t i = 0; i < modifiedNumVec.size(); i++)
 	{
-		num current = numVec.at(i);
+		num current = modifiedNumVec.at(i);
 
 		output.append(current.name + ": " + std::to_string(current.value) + "\n");
 
