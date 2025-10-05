@@ -94,20 +94,30 @@ void CobatManager::ReadValues(std::vector<int>& numbers, std::vector<std::string
 		
 		//make switch statement
 
-		if (newValue[0] == 'i'){
-			
-			numbers.push_back(stoi(newValue.substr(1)));
+		switch(newValue[0])
+		{
+			case 'i':
+			{
+				numbers.push_back(stoi(newValue.substr(1)));
 
-			//UtilityFunctions::print("reading an integer");
-		}
-		else if (newValue[0] == 's'){
-			strings.push_back(newValue.substr(1));
+				break;
+			}
+			case 's':
+			{
+				strings.push_back(newValue.substr(1));
 
-			//UtilityFunctions::print("reading a string");
-		}
-		else if (newValue[0] == 'r'){
-			
-			UtilityFunctions::print("reading a reference");
+				break;
+			}
+			case 'r':
+			{
+				UtilityFunctions::print("reading a reference");
+				break;
+			}
+			default:
+			{
+				UtilityFunctions::print("error: readValues encounterd invalid input");
+				break;
+			}
 		}
 		
 		values = values.substr(pos + 2);

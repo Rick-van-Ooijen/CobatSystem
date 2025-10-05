@@ -62,6 +62,7 @@ public:
 	std::vector<Modifier> modVec;
 	
 	void InitializeValues(String arg);
+	void SetName(String arg);
 	void ProcessModifiers();
 	String PrintData();
 	int FindNum(std::vector<num>& vector, std::string name);

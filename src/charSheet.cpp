@@ -28,6 +28,7 @@ void str::set(std::string iName, std::string iValue) {
 void CharSheet::_bind_methods() {
 
 	ClassDB::bind_method(D_METHOD("InitializeValues", "input"), &CharSheet::InitializeValues);
+	ClassDB::bind_method(D_METHOD("SetName", "input"), &CharSheet::SetName);
 	ClassDB::bind_method(D_METHOD("PrintData"), &CharSheet::PrintData);
 
 }
@@ -97,6 +98,12 @@ void CharSheet::InitializeValues(String arg) {
 	strVec.shrink_to_fit();
 	numVec.shrink_to_fit();
 
+}
+
+void CharSheet::SetName(String arg) {
+	CharString temp = ((String)arg).utf8().get_data();
+	char* value = (char*)(temp.get_data());
+	name = std::string(value);
 }
 
 void CharSheet::ProcessModifiers() {

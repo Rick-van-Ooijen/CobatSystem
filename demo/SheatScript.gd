@@ -6,6 +6,7 @@ func _ready():
 	var file = FileAccess.open("res://data.txt", FileAccess.READ)
 	var content = file.get_as_text()
 	self.InitializeValues(content)
+	self.SetName("Playe")
 	
 	#self.PrintData()
 	pass # Replace with function body.

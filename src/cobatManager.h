@@ -50,7 +50,6 @@ public:
 	void RunSequence(String arg);
 	void AddUnit(CharSheet* unit);
 
-	// RunTurn. checks which sides turn it is, and returns the active unit/side
 
 	void _process(double delta);
 
