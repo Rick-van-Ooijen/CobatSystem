@@ -10,7 +10,7 @@
 
 #readOut: sdgfr, i999
 
-#roll: 1, 64
+roll: 1, 64
 #changevar: target.health
 #roll: 1, 64
 #roll: 1, 64

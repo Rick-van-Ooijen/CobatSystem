@@ -2,6 +2,7 @@
 
 #include "gdexample.h"
 #include "charSheet.h"
+//#include "FNModifiers.h"
 #include "cobatManager.h"
 #include "modifier.h"
 

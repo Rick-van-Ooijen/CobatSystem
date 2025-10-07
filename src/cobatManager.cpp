@@ -184,6 +184,3 @@ int CobatManager::ReadInt(std::string value)
 }
 
 
-
-
-

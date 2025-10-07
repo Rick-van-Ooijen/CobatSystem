@@ -12,56 +12,60 @@
 #include <godot_cpp/variant/utility_functions.hpp>
 
 #include "charSheet.h"
+#include "FNModifiers.h"
 
 namespace godot {
 
-class ActionData : public Object{
-	GDCLASS(ActionData, Object)
-	public:
 	
-	ActionData();
-	~ActionData();
-
-	std::vector<str> strVec;
-	std::vector<num> numVec;
-
+	
+	class ActionData : public Object{
+		GDCLASS(ActionData, Object)
+		public:
+		
+		ActionData();
+		~ActionData();
+		
+		std::vector<str> strVec;
+		std::vector<num> numVec;
+		
+		protected:
+		static void _bind_methods();
+	};
+	
+	class CobatManager : public Node {
+	GDCLASS(CobatManager, Node)
+	
+	private:
+	
+	
+	
 	protected:
 	static void _bind_methods();
-};
-
-class CobatManager : public Node {
-	GDCLASS(CobatManager, Node)
-
-private:
-
-
-
-protected:
-static void _bind_methods();
-
-public:
+	
+	public:
 	static void ReadValues(std::vector<int>& numbers, std::vector<std::string>& strings, std::string values);
 	static std::string ReadString(std::string value);
 	static int ReadInt(std::string value);
-
+	
 	CobatManager();
 	~CobatManager();
-
+	
 	void RunSequence(String arg);
 	void AddUnit(CharSheet* unit);
-
-
+	
+	
 	void _process(double delta);
-
+	
 	std::vector<CharSheet*> units;
-private:
-
-
-
-
+	private:
+	
+	
+	
+	
+	
 	// find a way to have this not in the header. preferably its own file
 	std::unordered_map<std::string, std::function<void(ActionData&, std::vector<num>&, std::vector<str>&, std::string, CobatManager*)>> commands = {
-		{"roll", [](ActionData& data, std::vector<num>& numOutputs, std::vector<str>& strOutputs, std::string values, CobatManager* manager) {
+		{"roll", [](ActionData& data, std::vector<num>& numOutputs, std::vector<str>& strOutputs, std::string values, CobatManager* manager) {rollCommand(data, numOutputs, strOutputs, values, manager);/*
 			
 			
 			//UtilityFunctions::print("roll function activated");
@@ -72,13 +76,13 @@ private:
 			{
 				min = 2;
 				//look for var
-			}
-		
-			int max = stoi(values.substr(pos + 2));
-			int result = min + (rand() % (max - min));
-
-			bool found = false;
-			for (size_t i = 0; i < data.numVec.size(); i++)
+				}
+				
+				int max = stoi(values.substr(pos + 2));
+				int result = min + (rand() % (max - min));
+				
+				bool found = false;
+				for (size_t i = 0; i < data.numVec.size(); i++)
 			{
 				if (data.numVec[i].name == "fOut")
 				{
@@ -92,7 +96,7 @@ private:
 				data.numVec.push_back(newNum);
 			}
 			
-		}},
+		*/}},
 		{"changevar", [](ActionData& data, std::vector<num>& numOutputs, std::vector<str>& strOutputs, std::string values, CobatManager* manager) {
 			
 
