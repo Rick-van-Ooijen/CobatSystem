@@ -6,6 +6,7 @@
 #include <string>
 #include <sstream>
 #include <vector>
+#include <map>
 
 namespace godot {
 
@@ -54,6 +55,8 @@ public:
 
     std::vector<numMod> numModifiers;
     std::vector<strMod> strModifiers;
+	std::multimap<std::string, std::string> triggers;
+
 
 	void _process(double delta);
 };

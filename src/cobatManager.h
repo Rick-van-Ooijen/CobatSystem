@@ -59,6 +59,7 @@ namespace godot {
 	void _process(double delta);
 	
 	std::vector<CharSheet*> units;
+	std::vector<std::string> actionQue;
 	private:
 	
 	

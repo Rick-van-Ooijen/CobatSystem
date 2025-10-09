@@ -51,6 +51,7 @@ std::vector<num> modifiedNumVec;
 int side = 0;
 bool activated = false;
 
+
 protected:
 static void _bind_methods();
 
@@ -60,6 +61,7 @@ public:
 
 	std::string name = "Player";
 	std::vector<Modifier> modVec;
+	std::multimap<std::string, std::string> triggers;
 	
 	void InitializeValues(String arg);
 	void SetName(String arg);

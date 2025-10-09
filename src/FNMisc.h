@@ -9,6 +9,7 @@
 
 #include <functional>
 #include <unordered_map>
+#include <map>
 #include <godot_cpp/variant/utility_functions.hpp>
 
 #include "charSheet.h"
@@ -37,7 +38,32 @@ namespace godot {
 	}
 
 #define triggerCommand(data, numOutputs, strOutputs, values, manager) \
-    UtilityFunctions::print("<-->"); \
+	std::vector<int> numbers; \
+	std::vector<std::string> strings; \
+	ReadValues(numbers, strings, values); \
+\
+	for (size_t i = 0; i < manager.units.size(); i++) \
+	{\
+		std::multimap<string, string> unitTriggers = (units[i]->triggers); \
+		auto it = unitTriggers.begin(); \
+		int key = it->first; \
+		while (it != unitTriggers.end() && it->first == key) { \
+			manager->actionQue.push_back(it->second); \
+			it++; \
+		} \
+\
+\
+\
+		(*units[i]).modVec;\
+	}\
+
+
+	//check trigger list
+	//if find, add to manager.actionQue
+
+	//loop throug modifiers
+	//check that trigger list
+	//if find, add to manager.actionQue
 
 //loop through units and modifiers
 //find triggers (new var)

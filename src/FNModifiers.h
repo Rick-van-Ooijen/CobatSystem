@@ -16,7 +16,7 @@
 namespace godot {
 
 #define makeModifierCommand(data, numOutputs, strOutputs, values, manager) \
-  std::vector<int> numbers; \
+	std::vector<int> numbers; \
 	std::vector<std::string> strings; \
 	ReadValues(numbers, strings, values); \
 	std::string targetName = strings[0]; \
