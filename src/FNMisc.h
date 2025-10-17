@@ -42,11 +42,11 @@ namespace godot {
 	std::vector<std::string> strings; \
 	ReadValues(numbers, strings, values); \
 \
-	for (size_t i = 0; i < manager.units.size(); i++) \
+	for (size_t i = 0; i < manager->units.size(); i++) \
 	{\
-		std::multimap<string, string> unitTriggers = (units[i]->triggers); \
+		std::multimap<std::string, std::string> unitTriggers = (manager->units[i]->triggers); \
 		auto it = unitTriggers.begin(); \
-		int key = it->first; \
+		std::string key = strings[0]; \
 		while (it != unitTriggers.end() && it->first == key) { \
 			manager->actionQue.push_back(it->second); \
 			it++; \
@@ -54,7 +54,12 @@ namespace godot {
 \
 \
 \
-		(*units[i]).modVec;\
+		/*for (size_t j = 0; j < units[i]->modVec.size(); j++)*/ \
+		/*{*/\
+			/*std::multimap<std::string, std::string> modTriggers = (units[i]->modVec[j].triggers)*/\
+			/*(*units[i]).modVec;*/\
+\
+		/*}*/\
 	}\
 
 

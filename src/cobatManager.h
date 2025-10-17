@@ -53,6 +53,7 @@ namespace godot {
 	~CobatManager();
 	
 	void RunSequence(String arg);
+	void ActivateTrigger(String arg);
 	void AddUnit(CharSheet* unit);
 	
 	

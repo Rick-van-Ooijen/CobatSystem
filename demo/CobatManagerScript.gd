@@ -12,6 +12,7 @@ func _ready():
 	self.RunSequence(content)
 	pass # Replace with function body.
 
+	self.ActivateTrigger("sa")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

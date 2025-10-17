@@ -12,6 +12,7 @@ ActionData::~ActionData() {}
 void CobatManager::_bind_methods() {
 
 	ClassDB::bind_method(D_METHOD("RunSequence", "input"), &CobatManager::RunSequence);
+	ClassDB::bind_method(D_METHOD("ActivateTrigger", "input"), &CobatManager::ActivateTrigger);
 	ClassDB::bind_method(D_METHOD("AddUnit", "input"), &CobatManager::AddUnit);
 
 }
@@ -62,6 +63,53 @@ void CobatManager::RunSequence(String arg)
 			}
 	}
 
+
+}
+
+void CobatManager::ActivateTrigger(String arg)
+{
+	CharString temp = ((String)arg).utf8().get_data();
+	char* value = (char*)(temp.get_data());
+	std::string input = std::string(value);
+
+
+
+	std::vector<int> numbers;
+	std::vector<std::string> strings;
+	ReadValues(numbers, strings, input);
+
+	for (size_t i = 0; i < units.size(); i++)
+	{
+		if (units[i])
+		{
+			std::multimap<std::string, std::string> unitTriggers = (units[i]->triggers);
+			auto it = unitTriggers.begin();
+			std::string key;
+			if (!strings.empty())
+			{
+					key = strings[0];
+					while (it != unitTriggers.end() && it->first == key) {
+						actionQue.push_back(it->second);
+						it++; 
+				}
+			}
+			else {UtilityFunctions::print("error: no key");}
+	
+	
+			/*for (size_t j = 0; j < units[i]->modVec.size(); j++)*/ 
+			/*{*/
+				/*std::multimap<std::string, std::string> modTriggers = (units[i]->modVec[j].triggers)*/
+				/*(*units[i]).modVec;*/
+	
+			/*}*/
+
+		}
+	}
+
+	for (size_t i = 0; i < actionQue.size(); i++)
+	{
+		UtilityFunctions::print(actionQue[i].c_str());
+	}
 
 }
 

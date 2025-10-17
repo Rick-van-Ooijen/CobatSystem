@@ -61,7 +61,7 @@ public:
 
 	std::string name = "Player";
 	std::vector<Modifier> modVec;
-	std::multimap<std::string, std::string> triggers;
+	std::multimap<std::string, std::string> triggers = {{"a", "b"}};
 	
 	void InitializeValues(String arg);
 	void SetName(String arg);
