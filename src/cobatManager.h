@@ -82,7 +82,9 @@ namespace godot {
 			readOutCommand(data, numOutputs, strOutputs, values, manager);}},
 
 		{"makeModifier", [](ActionData& data, std::vector<num>& numOutputs, std::vector<str>& strOutputs, std::string values, CobatManager* manager) {
-			makeModifierCommand(data, numOutputs, strOutputs, values, manager);}}
+			makeModifierCommand(data, numOutputs, strOutputs, values, manager);}},
+		{"trigger", [](ActionData& data, std::vector<num>& numOutputs, std::vector<str>& strOutputs, std::string values, CobatManager* manager) {
+			ActivateTrigger(values);}}
 
 
 
