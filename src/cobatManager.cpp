@@ -12,8 +12,9 @@ ActionData::~ActionData() {}
 void CobatManager::_bind_methods() {
 
 	ClassDB::bind_method(D_METHOD("RunSequence", "input"), &CobatManager::RunSequence);
-	ClassDB::bind_method(D_METHOD("ActivateTrigger", "input"), &CobatManager::ActivateTrigger);
+	ClassDB::bind_method(D_METHOD("ActivateTrigger", "input"), &CobatManager::ActivateTriggerExt);
 	ClassDB::bind_method(D_METHOD("AddUnit", "input"), &CobatManager::AddUnit);
+	ClassDB::bind_method(D_METHOD("ProcessQue"), &CobatManager::ProcessQue);
 
 }
 
@@ -36,24 +37,30 @@ void CobatManager::RunSequence(String arg)
 	char* value = (char*)(temp.get_data());
 	std::string input = std::string(value);
 
-//input is one line
+	RunSequenceFromString(input);
+	
+}
+
+void CobatManager::RunSequenceFromString(std::string input)
+{
+	//input is one line
 	std::istringstream stream(input);
-
+	
 	std::string line;
-
+	
 	ActionData data;
 	std::vector<num> numOutputs;
 	std::vector<str> strOutputs;
-
+	
 	while (std::getline(stream, line)) {
 		// process each line
-
+	
 			size_t pos = line.find(": ");
 			if (pos != std::string::npos) {
 				std::string command = line.substr(0, pos); // seperate attribute name and value
 				std::string values = line.substr(pos + 2);
-
-
+	
+	
 			// use the command from the map
 			auto func = commands.find(command);
 			if (func != commands.end()) {
@@ -66,11 +73,17 @@ void CobatManager::RunSequence(String arg)
 
 }
 
-void CobatManager::ActivateTrigger(String arg)
+void CobatManager::ActivateTriggerExt(String arg)
 {
 	CharString temp = ((String)arg).utf8().get_data();
 	char* value = (char*)(temp.get_data());
 	std::string input = std::string(value);
+
+	ActivateTrigger(input);
+}
+
+void CobatManager::ActivateTrigger(std::string input)
+{
 
 
 
@@ -82,15 +95,19 @@ void CobatManager::ActivateTrigger(String arg)
 	{
 		if (units[i])
 		{
-			std::multimap<std::string, std::string> unitTriggers = (units[i]->triggers);
-			auto it = unitTriggers.begin();
+			//std::multimap<std::string, std::string> unitTriggers = (units[i]->triggers);
+			auto it = units[i]->triggers.begin();
 			std::string key;
 			if (!strings.empty())
 			{
-					key = strings[0];
-					while (it != unitTriggers.end() && it->first == key) {
+				key = strings[0];
+				while (it != units[i]->triggers.end())
+				{
+					if(it->first == key)
+					{
 						actionQue.push_back(it->second);
-						it++; 
+					}
+					it++;
 				}
 			}
 			else {UtilityFunctions::print("error: no key");}
@@ -111,6 +128,20 @@ void CobatManager::ActivateTrigger(String arg)
 		UtilityFunctions::print(actionQue[i].c_str());
 	}
 
+}
+
+void CobatManager::ProcessQue()
+{
+	for(std::string currentAction : actionQue)
+	{
+		std::ifstream currentStream(currentAction);
+						
+		std::stringstream buffer;
+		buffer << currentStream.rdbuf();
+		std::string content = buffer.str();
+
+		RunSequenceFromString(content);
+	}
 }
 
 void CobatManager::AddUnit(CharSheet* unit)

@@ -38,6 +38,25 @@ namespace godot {
 	}
 
 
+//strings
+//0 = unit
+//1 = name
+//2 = function
+//
+#define makeTriggerCommand(data, numOutputs, strOutputs, values, manager) \
+	std::vector<int> numbers; \
+	std::vector<std::string> strings; \
+	ReadValues(numbers, strings, values); \
+	\
+	for(size_t i = 0; i < manager->units.size(); i++)\
+	{\
+		if(manager->units[i]->name == strings[0])\
+		{\
+			manager->units[i]->triggers.insert({strings[1], strings[2]});\
+		}\
+	}
+
+	//
 
 
 }

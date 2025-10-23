@@ -53,8 +53,11 @@ namespace godot {
 	~CobatManager();
 	
 	void RunSequence(String arg);
-	void ActivateTrigger(String arg);
+	void RunSequenceFromString(std::string arg);
+	void ActivateTriggerExt(String arg);
+	void ActivateTrigger(std::string arg);
 	void AddUnit(CharSheet* unit);
+	void ProcessQue();
 	
 	
 	void _process(double delta);
@@ -83,8 +86,12 @@ namespace godot {
 
 		{"makeModifier", [](ActionData& data, std::vector<num>& numOutputs, std::vector<str>& strOutputs, std::string values, CobatManager* manager) {
 			makeModifierCommand(data, numOutputs, strOutputs, values, manager);}},
+
 		{"trigger", [](ActionData& data, std::vector<num>& numOutputs, std::vector<str>& strOutputs, std::string values, CobatManager* manager) {
-			ActivateTrigger(values);}}
+			manager->ActivateTrigger(values);}},
+
+		{"makeTrigger", [](ActionData& data, std::vector<num>& numOutputs, std::vector<str>& strOutputs, std::string values, CobatManager* manager) {
+			makeTriggerCommand(data, numOutputs, strOutputs, values, manager);}}
 
 
 

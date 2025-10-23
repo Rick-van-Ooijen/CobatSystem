@@ -10,9 +10,11 @@ func _ready():
 	var file = FileAccess.open("res://attack.txt", FileAccess.READ)
 	var content = file.get_as_text()
 	self.RunSequence(content)
-	pass # Replace with function body.
+	
 
-	self.ActivateTrigger("sa")
+	self.ActivateTrigger("sb")
+	
+	self.ProcessQue()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

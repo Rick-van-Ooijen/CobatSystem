@@ -29,7 +29,7 @@ roll: 1, 64
 makeModifier: sPlaye, s<i-damage-i0-i1, s<i-speed-i0-i6
 makeModifier: sPlaye, s<i-damage-i2-i6, s<i-speed-i1-i999
 makeModifier: sPlaye, s<s-name-i0-sbanana
-
+makeTrigger: sPlaye, sb, strigger.txt
 
 #add: i1, i2, snewnumber
 #changeVar: snameVar, sunitname, rnewnumber
