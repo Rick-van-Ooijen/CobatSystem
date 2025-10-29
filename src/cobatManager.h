@@ -81,6 +81,24 @@ namespace godot {
 		{"subtract", [](ActionData& data, std::vector<num>& numOutputs, std::vector<str>& strOutputs, std::string values, CobatManager* manager) {
 			subtractCommand(data, numOutputs, strOutputs, values, manager);}},
 
+		{"multiply", [](ActionData& data, std::vector<num>& numOutputs, std::vector<str>& strOutputs, std::string values, CobatManager* manager) {
+			multiplyCommand(data, numOutputs, strOutputs, values, manager);}},
+
+		{"divide", [](ActionData& data, std::vector<num>& numOutputs, std::vector<str>& strOutputs, std::string values, CobatManager* manager) {
+			divideCommand(data, numOutputs, strOutputs, values, manager);}},
+
+		{"addSet", [](ActionData& data, std::vector<num>& numOutputs, std::vector<str>& strOutputs, std::string values, CobatManager* manager) {
+			addSetCommand(data, numOutputs, strOutputs, values, manager);}},
+
+		{"subtractSet", [](ActionData& data, std::vector<num>& numOutputs, std::vector<str>& strOutputs, std::string values, CobatManager* manager) {
+			subtractSetCommand(data, numOutputs, strOutputs, values, manager);}},
+
+		{"multiplySet", [](ActionData& data, std::vector<num>& numOutputs, std::vector<str>& strOutputs, std::string values, CobatManager* manager) {
+			multiplySetCommand(data, numOutputs, strOutputs, values, manager);}},
+			
+		{"divideSet", [](ActionData& data, std::vector<num>& numOutputs, std::vector<str>& strOutputs, std::string values, CobatManager* manager) {
+			divideSetCommand(data, numOutputs, strOutputs, values, manager);}},
+
 		{"readOut", [](ActionData& data, std::vector<num>& numOutputs, std::vector<str>& strOutputs, std::string values, CobatManager* manager) {
 			readOutCommand(data, numOutputs, strOutputs, values, manager);}},
 

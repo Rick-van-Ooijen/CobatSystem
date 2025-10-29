@@ -48,7 +48,7 @@ namespace godot {
 	std::vector<std::string> strings; \
 	ReadValues(numbers, strings, values); \
 	\
-	for(size_t i = 0; i < manager->units.size(); i++)\
+	for (size_t i = 0; i < manager->units.size(); i++)\
 	{\
 		if(manager->units[i]->name == strings[0])\
 		{\

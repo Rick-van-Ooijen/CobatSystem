@@ -49,23 +49,117 @@ namespace godot {
 
 
 #define addCommand(data, numOutputs, strOutputs, values, manager) \
-    /*get numbers from values*/ \
-    int x = 0; \
-    int y = 0; \
-    int z = x + y; \
+	std::vector<int> numbers; \
+	std::vector<std::string> strings; \
+	ReadValues(numbers, strings, values); \
+	\
+    int result = numbers[0] + numbers[1]; \
+	\
     num newNum = num(); \
-    newNum.set("Out", z); \
+    newNum.set(strings[0], result); \
     data.numVec.push_back(newNum);
 
 
 #define subtractCommand(data, numOutputs, strOutputs, values, manager) \
-    /*get numbers from values*/ \
-    int x = 0; \
-    int y = 0; \
-    int z = x - y; \
+	std::vector<int> numbers; \
+	std::vector<std::string> strings; \
+	ReadValues(numbers, strings, values); \
+	\
+    int result = numbers[0] - numbers[1]; \
+	\
     num newNum = num(); \
-    newNum.set("Out", z); \
+    newNum.set(strings[0], result); \
     data.numVec.push_back(newNum);
+
+
+#define multiplyCommand(data, numOutputs, strOutputs, values, manager) \
+	std::vector<int> numbers; \
+	std::vector<std::string> strings; \
+	ReadValues(numbers, strings, values); \
+	\
+    int result = numbers[0] * numbers[1]; \
+	\
+    num newNum = num(); \
+    newNum.set(strings[0], result); \
+    data.numVec.push_back(newNum);
+
+
+#define divideCommand(data, numOutputs, strOutputs, values, manager) \
+	std::vector<int> numbers; \
+	std::vector<std::string> strings; \
+	ReadValues(numbers, strings, values); \
+	\
+    int result = numbers[0] / numbers[1]; \
+	\
+    num newNum = num(); \
+    newNum.set(strings[0], result); \
+    data.numVec.push_back(newNum);
+
+
+
+#define addSetCommand(data, numOutputs, strOutputs, values, manager) \
+	std::vector<int> numbers; \
+	std::vector<std::string> strings; \
+	ReadValues(numbers, strings, values); \
+	\
+    int result = numbers[0] + numbers[1]; \
+	\
+	for (size_t i = 0; i < manager->units.size(); i++)\
+	{\
+		if (manager->units[i]->name == strings[0])\
+		{\
+			for (size_t j = 0; j < (manager->units[i])->numVec.size(); j++)\
+			{\
+				if ((manager->units[i])->numVec[j].name == strings[1])\
+				{\
+					(manager->units[i])->numVec[j].value = result;\
+				}\
+			}\
+		}\
+	}
+
+
+#define subtractSetCommand(data, numOutputs, strOutputs, values, manager) \
+	std::vector<int> numbers; \
+	std::vector<std::string> strings; \
+	ReadValues(numbers, strings, values); \
+	\
+    int result = numbers[0] - numbers[1]; \
+	\
+    num newNum = num(); \
+    newNum.set(strings[0], result); \
+    data.numVec.push_back(newNum);
+
+
+#define multiplySetCommand(data, numOutputs, strOutputs, values, manager) \
+	std::vector<int> numbers; \
+	std::vector<std::string> strings; \
+	ReadValues(numbers, strings, values); \
+	\
+    int result = numbers[0] * numbers[1]; \
+	\
+    num newNum = num(); \
+    newNum.set(strings[0], result); \
+    data.numVec.push_back(newNum);
+
+
+#define divideSetCommand(data, numOutputs, strOutputs, values, manager) \
+	std::vector<int> numbers; \
+	std::vector<std::string> strings; \
+	ReadValues(numbers, strings, values); \
+	\
+    int result = numbers[0] / numbers[1]; \
+	\
+    num newNum = num(); \
+    newNum.set(strings[0], result); \
+    data.numVec.push_back(newNum);
+
+
+
+
+
+
+
 
 
 

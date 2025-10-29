@@ -42,20 +42,21 @@ class CharSheet : public Node {
 private:
 
 
-std::vector<str> strVec;
-std::vector<num> numVec;
-
-
-std::vector<str> modifiedStrVec;
-std::vector<num> modifiedNumVec;
-int side = 0;
-bool activated = false;
 
 
 protected:
 static void _bind_methods();
 
 public:
+	std::vector<str> strVec;
+	std::vector<num> numVec;
+
+
+	std::vector<str> modifiedStrVec;
+	std::vector<num> modifiedNumVec;
+	int side = 0;
+	bool activated = false;
+
 	CharSheet();
 	~CharSheet();
 
