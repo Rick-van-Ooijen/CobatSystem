@@ -108,11 +108,12 @@ namespace godot {
 	{\
 		if (manager->units[i]->name == strings[0])\
 		{\
-			for (size_t j = 0; j < (manager->units[i])->numVec.size(); j++)\
+			for (size_t j = 0; j < manager->units[i]->numVec.size(); j++)\
 			{\
-				if ((manager->units[i])->numVec[j].name == strings[1])\
+				if (manager->units[i]->numVec[j].name == strings[1])\
 				{\
-					(manager->units[i])->numVec[j].value = result;\
+					manager->units[i]->numVec[j].value = result;\
+					manager->units[i]->ProcessModifiers();\
 				}\
 			}\
 		}\
@@ -126,9 +127,21 @@ namespace godot {
 	\
     int result = numbers[0] - numbers[1]; \
 	\
-    num newNum = num(); \
-    newNum.set(strings[0], result); \
-    data.numVec.push_back(newNum);
+	\
+	for (size_t i = 0; i < manager->units.size(); i++)\
+	{\
+		if (manager->units[i]->name == strings[0])\
+		{\
+			for (size_t j = 0; j < manager->units[i]->numVec.size(); j++)\
+			{\
+				if (manager->units[i]->numVec[j].name == strings[1])\
+				{\
+					manager->units[i]->numVec[j].value = result;\
+					manager->units[i]->ProcessModifiers();\
+				}\
+			}\
+		}\
+	}
 
 
 #define multiplySetCommand(data, numOutputs, strOutputs, values, manager) \
@@ -138,9 +151,21 @@ namespace godot {
 	\
     int result = numbers[0] * numbers[1]; \
 	\
-    num newNum = num(); \
-    newNum.set(strings[0], result); \
-    data.numVec.push_back(newNum);
+	\
+	for (size_t i = 0; i < manager->units.size(); i++)\
+	{\
+		if (manager->units[i]->name == strings[0])\
+		{\
+			for (size_t j = 0; j < manager->units[i]->numVec.size(); j++)\
+			{\
+				if (manager->units[i]->numVec[j].name == strings[1])\
+				{\
+					manager->units[i]->numVec[j].value = result;\
+					manager->units[i]->ProcessModifiers();\
+				}\
+			}\
+		}\
+	}
 
 
 #define divideSetCommand(data, numOutputs, strOutputs, values, manager) \
@@ -150,9 +175,21 @@ namespace godot {
 	\
     int result = numbers[0] / numbers[1]; \
 	\
-    num newNum = num(); \
-    newNum.set(strings[0], result); \
-    data.numVec.push_back(newNum);
+	\
+	for (size_t i = 0; i < manager->units.size(); i++)\
+	{\
+		if (manager->units[i]->name == strings[0])\
+		{\
+			for (size_t j = 0; j < manager->units[i]->numVec.size(); j++)\
+			{\
+				if (manager->units[i]->numVec[j].name == strings[1])\
+				{\
+					manager->units[i]->numVec[j].value = result;\
+					manager->units[i]->ProcessModifiers();\
+				}\
+			}\
+		}\
+	}
 
 
 

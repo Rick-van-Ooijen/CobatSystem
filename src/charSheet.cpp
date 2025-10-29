@@ -97,6 +97,7 @@ void CharSheet::InitializeValues(String arg) {
 
 	strVec.shrink_to_fit();
 	numVec.shrink_to_fit();
+	ProcessModifiers();
 
 }
 

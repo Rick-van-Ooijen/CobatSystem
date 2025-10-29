@@ -31,6 +31,7 @@ roll: 1, 64
 #makeModifier: sPlaye, s<s-name-i0-sbanana
 
 addSet: i5, i20, sPlaye, sdamage
+multiplySet: i7, i37, sPlaye, sspeed
 
 makeTrigger: sPlaye, sb, strigger.txt
 
