@@ -169,9 +169,7 @@ void CobatManager::ReadValues(std::vector<int>& numbers, std::vector<std::string
 			foundEnd = true;
 		}
 		
-		std::string newValue = values.substr(0, pos); // seperate attribute name and value
-		
-		//make switch statement
+		std::string newValue = values.substr(0, pos);
 
 		switch(newValue[0])
 		{
