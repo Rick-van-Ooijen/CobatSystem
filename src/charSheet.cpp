@@ -148,7 +148,7 @@ void CharSheet::ProcessModifiers() {
 	
 					default:
 						{
-							break;
+							UtilityFunctions::print(("ERROR: invalid modifier type");
 						}
 				}
 				
