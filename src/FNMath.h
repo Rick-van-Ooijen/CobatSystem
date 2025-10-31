@@ -52,55 +52,75 @@ namespace godot {
 	std::vector<int> numbers; \
 	std::vector<std::string> strings; \
 	ReadValues(numbers, strings, values); \
+	if(numbers.size() >= 2 && strings.size() >= 1){\
 	\
     int result = numbers[0] + numbers[1]; \
 	\
     num newNum = num(); \
     newNum.set(strings[0], result); \
-    data.numVec.push_back(newNum);
+    data.numVec.push_back(newNum);\
+	}\
+	else{\
+		UtilityFunctions::print("ERROR: not enough inputs for function add"); \
+	}
+
 
 
 #define subtractCommand(data, numOutputs, strOutputs, values, manager) \
 	std::vector<int> numbers; \
 	std::vector<std::string> strings; \
 	ReadValues(numbers, strings, values); \
+	if(numbers.size() >= 2 && strings.size() >= 1){\
 	\
     int result = numbers[0] - numbers[1]; \
 	\
     num newNum = num(); \
     newNum.set(strings[0], result); \
-    data.numVec.push_back(newNum);
-
+    data.numVec.push_back(newNum);\
+	}\
+	else{\
+		UtilityFunctions::print("ERROR: not enough inputs for function subtract"); \
+	}
 
 #define multiplyCommand(data, numOutputs, strOutputs, values, manager) \
 	std::vector<int> numbers; \
 	std::vector<std::string> strings; \
 	ReadValues(numbers, strings, values); \
+	if(numbers.size() >= 2 && strings.size() >= 1){\
 	\
     int result = numbers[0] * numbers[1]; \
 	\
     num newNum = num(); \
     newNum.set(strings[0], result); \
-    data.numVec.push_back(newNum);
+    data.numVec.push_back(newNum);\
+	}\
+	else{\
+		UtilityFunctions::print("ERROR: not enough inputs for function multiply"); \
+	}
 
 
 #define divideCommand(data, numOutputs, strOutputs, values, manager) \
 	std::vector<int> numbers; \
 	std::vector<std::string> strings; \
 	ReadValues(numbers, strings, values); \
+	if(numbers.size() >= 2 && strings.size() >= 1){\
 	\
     int result = numbers[0] / numbers[1]; \
 	\
     num newNum = num(); \
     newNum.set(strings[0], result); \
-    data.numVec.push_back(newNum);
-
+    data.numVec.push_back(newNum);\
+	}\
+	else{\
+		UtilityFunctions::print("ERROR: not enough inputs for function divide"); \
+	}
 
 
 #define addSetCommand(data, numOutputs, strOutputs, values, manager) \
 	std::vector<int> numbers; \
 	std::vector<std::string> strings; \
 	ReadValues(numbers, strings, values); \
+	if(numbers.size() >= 2 && strings.size() >= 2){\
 	\
     int result = numbers[0] + numbers[1]; \
 	\
@@ -117,6 +137,10 @@ namespace godot {
 				}\
 			}\
 		}\
+	}\
+	}\
+	else{\
+		UtilityFunctions::print("ERROR: not enough inputs for function addSet"); \
 	}
 
 
@@ -124,6 +148,7 @@ namespace godot {
 	std::vector<int> numbers; \
 	std::vector<std::string> strings; \
 	ReadValues(numbers, strings, values); \
+	if(numbers.size() >= 2 && strings.size() >= 2){\
 	\
     int result = numbers[0] - numbers[1]; \
 	\
@@ -141,6 +166,10 @@ namespace godot {
 				}\
 			}\
 		}\
+	}\
+	}\
+	else{\
+		UtilityFunctions::print("ERROR: not enough inputs for function subtractSet"); \
 	}
 
 
@@ -148,6 +177,7 @@ namespace godot {
 	std::vector<int> numbers; \
 	std::vector<std::string> strings; \
 	ReadValues(numbers, strings, values); \
+	if(numbers.size() >= 2 && strings.size() >= 2){\
 	\
     int result = numbers[0] * numbers[1]; \
 	\
@@ -165,6 +195,10 @@ namespace godot {
 				}\
 			}\
 		}\
+	}\
+	}\
+	else{\
+		UtilityFunctions::print("ERROR: not enough inputs for function multiplySet"); \
 	}
 
 
@@ -172,6 +206,7 @@ namespace godot {
 	std::vector<int> numbers; \
 	std::vector<std::string> strings; \
 	ReadValues(numbers, strings, values); \
+	if(numbers.size() >= 2 && strings.size() >= 2){\
 	\
     int result = numbers[0] / numbers[1]; \
 	\
@@ -189,6 +224,10 @@ namespace godot {
 				}\
 			}\
 		}\
+	}\
+	}\
+	else{\
+		UtilityFunctions::print("ERROR: not enough inputs for function divideSet"); \
 	}
 
 

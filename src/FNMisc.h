@@ -20,6 +20,7 @@ namespace godot {
 	std::vector<int> numbers; \
 	std::vector<std::string> strings; \
 	ReadValues(numbers, strings, values); \
+	if(numbers.size() >= 1 && strings.size() >= 1){\
     for (int currentNumber : numbers){ \
 		UtilityFunctions::print(currentNumber); \
 	} \
@@ -35,7 +36,12 @@ namespace godot {
 		UtilityFunctions::print(currentNum.name.c_str()); \
 		UtilityFunctions::print(currentNum.value); \
 		UtilityFunctions::print("<-->"); \
+	}\
+	}\
+	else{\
+		UtilityFunctions::print("ERROR: not enough inputs for function readOut"); \
 	}
+	
 
 
 //strings
@@ -48,15 +54,19 @@ namespace godot {
 	std::vector<std::string> strings; \
 	ReadValues(numbers, strings, values); \
 	\
+	if(strings.size() >= 3){\
 	for (size_t i = 0; i < manager->units.size(); i++)\
 	{\
 		if(manager->units[i]->name == strings[0])\
 		{\
 			manager->units[i]->triggers.insert({strings[1], strings[2]});\
 		}\
+	}\
+	}\
+	else{\
+		UtilityFunctions::print("ERROR: not enough inputs for function makeTrigger"); \
 	}
-
-	//
+	
 
 
 }

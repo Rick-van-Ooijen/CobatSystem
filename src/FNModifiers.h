@@ -19,6 +19,8 @@ namespace godot {
 	std::vector<int> numbers; \
 	std::vector<std::string> strings; \
 	ReadValues(numbers, strings, values); \
+	if(strings.size() >= 1){\
+	\
 	std::string targetName = strings[0]; \
 	Modifier newModifier; \
 	for (size_t i = 1; i < strings.size(); i++) \
@@ -83,6 +85,10 @@ namespace godot {
 			UtilityFunctions::print((*currentUnit).name.c_str()); \
 			UtilityFunctions::print(targetName.c_str()); \
 		} \
+	}\
+	}\
+	else{\
+		UtilityFunctions::print("ERROR: not enough inputs for function makeModifier"); \
 	}
 
 
