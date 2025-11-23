@@ -65,7 +65,7 @@ public:
 	}
 
 	std::string toString() {	
-		std::string output = (std::to_string(type) + " " + lexeme + " " + literal);
+		std::string output = (std::to_string(type) + " line: (" + std::to_string(line) + ") " + lexeme + " " + literal);
 		return output;}
 
 protected:
@@ -88,6 +88,7 @@ public:
 	Scanner(std::string iSource, RBInterpreter* iInterpreter) {source = iSource; interpreter = iInterpreter;}
 
 	std::vector<Token> scanTokens(std::string source);
+	void string();
 
 
 	void addToken(int type) {addToken(type, "");};

@@ -141,8 +141,14 @@ std::vector<Token> Scanner::scanTokens(std::string source)
 			{
 				line++;
 			} break;
+			case '"': {string();} break;
 			default:
 			{
+				if ()
+				{
+					
+				}
+
 				interpreter->reportError(line, "Unexpected character.");
 			}
 		}
@@ -160,4 +166,27 @@ void Scanner::addToken(int type, std::string literal)
 	std::string text = source.substr(start, (current - start));
 
 	tokens.push_back(Token(type, text, literal, line));
+}
+
+void Scanner::string()
+{
+	while (source[current] != '"' && !(current >= source.length())) 
+	{
+		if (char(source[current]) == '\n')
+		{
+			line++;
+		}
+		current++;
+	}
+
+	if(current >= source.length())
+	{
+		interpreter->reportError(line, "Unterminated string.");
+	}
+
+	
+	std::string value = source.substr(start + 1, current - 1);
+	current++;
+	addToken(TokenType::T_STRING, value);
+	
 }
