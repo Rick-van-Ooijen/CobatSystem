@@ -1,10 +1,7 @@
 #include "register_types.h"
 
 #include "gdexample.h"
-#include "charSheet.h"
-//#include "FNModifiers.h"
-#include "cobatManager.h"
-#include "modifier.h"
+#include "RBInterpreter.h"
 
 #include <gdextension_interface.h>
 #include <godot_cpp/core/defs.hpp>
@@ -19,11 +16,7 @@ void initialize_example_module(ModuleInitializationLevel p_level) {
 	}
 
 	ClassDB::register_class<GDExample>();
-	ClassDB::register_class<Modifier>();
-	ClassDB::register_class<CharSheet>();
-	ClassDB::register_class<num>();
-	ClassDB::register_class<str>();
-	ClassDB::register_class<CobatManager>();
+	ClassDB::register_class<RBInterpreter>();
 
 }
 

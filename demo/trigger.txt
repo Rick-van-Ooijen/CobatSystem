@@ -1,7 +1,0 @@
-
-
-readOut: sapple, i1, i420, sbanana, rsomething
-
-readOut: i27, sgreen
-
-readOut: sdgfr, i999
