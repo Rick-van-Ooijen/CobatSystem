@@ -1,6 +1,4 @@
 /=
+"bananen"
 
-//+++++++
-99.9
-<===
-"dfgdgfjhjdsgfdgfjjjj"
++++++

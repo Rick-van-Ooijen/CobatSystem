@@ -173,9 +173,9 @@ void Scanner::addToken(int type, std::string literal)
 
 void Scanner::string()
 {
-	while (source[current+1] != '"' && !(current >= source.length())) 
+	while (source[current] != '"' && !(current >= source.length())) 
 	{
-		if (char(source[current+1]) == '\n')
+		if (char(source[current]) == '\n')
 		{
 			line++;
 		}
@@ -188,23 +188,23 @@ void Scanner::string()
 	}
 
 	
-	std::string value = source.substr(start + 1, current - 1);
-	addToken(TokenType::T_STRING, value);
+	std::string value = source.substr(start + 1, current - 4);
 	current++;
+	addToken(TokenType::T_STRING, value);
 	
 }
 
 void Scanner::number()
 {
-	while (std::isdigit(source[current+1])) 
+	while (std::isdigit(source[current])) 
 	{
 		current++;
 	}
 
-	if (source[current+1] == '.' && std::isdigit(source[current+1]))
+	if (source[current] == '.' && std::isdigit(source[current+1]))
 	{
 		current++;
-		while (std::isdigit(source[current+1])) 
+		while (std::isdigit(source[current])) 
 		{
 			current++;
 		}
