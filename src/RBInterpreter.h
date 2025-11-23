@@ -89,6 +89,7 @@ public:
 
 	std::vector<Token> scanTokens(std::string source);
 	void string();
+	void number();
 
 
 	void addToken(int type) {addToken(type, "");};
