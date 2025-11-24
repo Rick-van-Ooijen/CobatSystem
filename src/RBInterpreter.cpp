@@ -234,10 +234,10 @@ void Scanner::identifier()
 	
 	// find the correct type based on keyword
 	int type = keywords.find(text)->second;
-	if (type == 0)
+	if (type >= 39)
 	{
 		type = TokenType::T_IDENTIFIER;
 	}
 
-	addToken(TokenType::T_NUMBER, text);
+	addToken(type, text);
 }
