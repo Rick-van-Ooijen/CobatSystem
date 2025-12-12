@@ -1,0 +1,6 @@
+str
+name, test
+int
+hp, 6
+damage, 3
+speed, 4
