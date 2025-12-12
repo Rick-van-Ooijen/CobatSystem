@@ -4,7 +4,6 @@
 #include <iostream>
 #include <sstream>
 #include <fstream>
-#include <cctype>
 
 using namespace godot;
 
@@ -145,14 +144,12 @@ std::vector<Token> Scanner::scanTokens(std::string source)
 			case '"': {string();} break;
 			default:
 			{
-				if (std::isdigit(c))
+				if ()
 				{
-					number();
+					
 				}
-				else
-				{
-					interpreter->reportError(line, "Unexpected character.");
-				}
+
+				interpreter->reportError(line, "Unexpected character.");
 			}
 		}
 	
@@ -173,9 +170,9 @@ void Scanner::addToken(int type, std::string literal)
 
 void Scanner::string()
 {
-	while (source[current+1] != '"' && !(current >= source.length())) 
+	while (source[current] != '"' && !(current >= source.length())) 
 	{
-		if (char(source[current+1]) == '\n')
+		if (char(source[current]) == '\n')
 		{
 			line++;
 		}
@@ -189,27 +186,7 @@ void Scanner::string()
 
 	
 	std::string value = source.substr(start + 1, current - 1);
-	addToken(TokenType::T_STRING, value);
 	current++;
+	addToken(TokenType::T_STRING, value);
 	
-}
-
-void Scanner::number()
-{
-	while (std::isdigit(source[current+1])) 
-	{
-		current++;
-	}
-
-	if (source[current+1] == '.' && std::isdigit(source[current+1]))
-	{
-		current++;
-		while (std::isdigit(source[current+1])) 
-		{
-			current++;
-		}
-	}
-
-	std::string value = source.substr(start, current);
-	addToken(TokenType::T_NUMBER, value);
 }
