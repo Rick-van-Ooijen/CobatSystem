@@ -65,8 +65,8 @@ public:
 	line = iLine;
 	}
 
-	std::string toString() {
-		std::string output = ("line: " +std::to_string(line) + " type: " + std::to_string(type) + " lex: " + lexeme + " literal: " + literal);
+	std::string toString() {	
+		std::string output = ("type (" +std::to_string(type) + ") line: (" + std::to_string(line) + ") lex: (" + lexeme + ")  literal: " + literal);
 		return output;}
 
 protected:

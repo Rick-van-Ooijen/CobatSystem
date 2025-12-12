@@ -2,9 +2,7 @@
 "bananen"
 99
 
-orchid
-varken
 for
-ja ap
+jaap
 a+var        +
 +++++
