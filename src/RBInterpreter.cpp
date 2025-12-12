@@ -188,7 +188,7 @@ void Scanner::string()
 	}
 
 	
-	std::string value = source.substr(start + 1, current - start - 1);
+	std::string value = source.substr(start + 1, current - 4);
 	current++;
 	addToken(TokenType::T_STRING, value);
 	
@@ -196,7 +196,7 @@ void Scanner::string()
 
 void Scanner::number()
 {
-	while (std::isdigit(source[current]) && source[current] != '\n') 
+	while (std::isdigit(source[current])) 
 	{
 		current++;
 	}
@@ -210,6 +210,6 @@ void Scanner::number()
 		}
 	}
 
-	std::string value = source.substr(start, current - start);
+	std::string value = source.substr(start, current);
 	addToken(TokenType::T_NUMBER, value);
 }
