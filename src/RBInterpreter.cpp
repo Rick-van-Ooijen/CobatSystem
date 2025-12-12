@@ -145,13 +145,9 @@ std::vector<Token> Scanner::scanTokens(std::string source)
 			case '"': {string();} break;
 			default:
 			{
-				if (std::isdigit(c)) // for numbers
+				if (std::isdigit(c))
 				{
 					number();
-				}
-				else if (std::isalpha(c)) // for identifiers
-				{
-					identifier();
 				}
 				else
 				{
@@ -177,7 +173,6 @@ void Scanner::addToken(int type, std::string literal)
 
 void Scanner::string()
 {
-	// look further until we run into the next quotation mark.
 	while (source[current] != '"' && !(current >= source.length())) 
 	{
 		if (char(source[current]) == '\n')
@@ -187,7 +182,6 @@ void Scanner::string()
 		current++;
 	}
 
-	// error if we run into the end instead of a second quotation mark
 	if(current >= source.length())
 	{
 		interpreter->reportError(line, "Unterminated string.");
@@ -202,13 +196,11 @@ void Scanner::string()
 
 void Scanner::number()
 {
-	// as long as digits are there we continue.
 	while (std::isdigit(source[current]) && source[current] != '\n') 
 	{
 		current++;
 	}
 
-	// if we find a dot and after it another digit, we go through every digit after the dot as well
 	if (source[current] == '.' && std::isdigit(source[current+1]))
 	{
 		current++;
@@ -220,24 +212,4 @@ void Scanner::number()
 
 	std::string value = source.substr(start, current - start);
 	addToken(TokenType::T_NUMBER, value);
-}
-
-void Scanner::identifier()
-{
-	// continue through all alphanumeric characters
-	while (std::isalnum(source[current]) && source[current] != '\n') 
-	{
-		current++;
-	}
-	
-	std::string text = source.substr(start, current - start);
-	
-	// find the correct type based on keyword
-	int type = keywords.find(text)->second;
-	if (type == 0)
-	{
-		type = TokenType::T_IDENTIFIER;
-	}
-
-	addToken(TokenType::T_NUMBER, text);
 }

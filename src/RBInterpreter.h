@@ -4,7 +4,6 @@
 #include <godot_cpp/classes/Node.hpp>
 #include <string>
 #include <vector>
-#include <unordered_map>
 
 namespace godot {
 
@@ -66,7 +65,7 @@ public:
 	}
 
 	std::string toString() {	
-		std::string output = ("type (" +std::to_string(type) + ") line: (" + std::to_string(line) + ") lex: (" + lexeme + ")  literal: " + literal);
+		std::string output = (std::to_string(type) + " line: (" + std::to_string(line) + ") " + lexeme + " " + literal);
 		return output;}
 
 protected:
@@ -91,7 +90,6 @@ public:
 	std::vector<Token> scanTokens(std::string source);
 	void string();
 	void number();
-	void identifier();
 
 
 	void addToken(int type) {addToken(type, "");};
@@ -99,26 +97,6 @@ public:
 
 protected:
 	static void _bind_methods() {};
-
-
-std::unordered_map<std::string, int> keywords = {
-		{"and", TokenType::T_AND},
-		{"class", TokenType::T_CLASS},
-		{"else", TokenType::T_ELSE},
-		{"false", TokenType::T_FALSE},
-		{"for", TokenType::T_FOR},
-		{"fun", TokenType::T_FUN},
-		{"if", TokenType::T_IF},
-		{"nil", TokenType::T_NIL},
-		{"or", TokenType::T_OR},
-		{"print", TokenType::T_PRINT},
-		{"return", TokenType::T_RETURN},
-		{"super", TokenType::T_SUPER},
-		{"this", TokenType::T_THIS},
-		{"true", TokenType::T_TRUE},
-		{"var", TokenType::T_VAR},
-		{"while", TokenType::T_WHILE}
-	};
 };
 
 

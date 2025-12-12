@@ -1,8 +1,4 @@
 /=
 "bananen"
-99
-
-for
-jaap
-a+var        +
+99        +
 +++++
